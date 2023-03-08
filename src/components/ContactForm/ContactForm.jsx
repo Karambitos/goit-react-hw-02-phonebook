@@ -2,12 +2,10 @@ import { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import Input from '../Input/Input';
 import styles from '../ContactForm/ContactForm.module.css';
+import PropTypes from 'prop-types';
+
 
 class ContactForm extends Component {
-  // constructor(props) {
-  //   super(props);
-  // }
-
   state = {
     name: '',
     number: '',
@@ -37,14 +35,6 @@ class ContactForm extends Component {
 
   handleInputChange = event => {
     const { name, value } = event.currentTarget;
-    // const re = new RegExp(
-    //   '+?d{1,4}?[-.s]?(?d{1,3}?)?[-.s]?d{1,4}[-.s]?d{1,4}[-.s]?d{1,9}',
-    //   'i'
-    // );
-    // // "\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-    // if (value.match(re) != null) {
-    //   this.setState({ [name]: value });
-    // }
     this.setState({ [name]: value });
   };
 
@@ -61,5 +51,18 @@ class ContactForm extends Component {
     );
   }
 }
+
+ContactForm.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired,
+    })
+  ),
+  hendelContactCreate: PropTypes.func.isRequired
+};
+
+
 
 export default ContactForm;

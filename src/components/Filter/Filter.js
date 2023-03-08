@@ -1,4 +1,5 @@
 import styles from '../Filter/Filter.module.css';
+import PropTypes from 'prop-types';
 
 export default function Filter({ value, hendelChangeSerch }) {
   return (
@@ -13,3 +14,10 @@ export default function Filter({ value, hendelChangeSerch }) {
     </label>
   );
 }
+
+
+Filter.propTypes = {
+  value: PropTypes.string.isRequired,
+  hendelChangeSerch: PropTypes.func.isRequired
+
+};
